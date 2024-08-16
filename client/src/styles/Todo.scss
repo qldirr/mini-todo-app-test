@@ -1,0 +1,29 @@
+@import './utils.scss';
+
+.Todo {
+  padding: 8px 24px;
+  display: flex;
+
+  input[type='checkbox'] {
+    width: 24px;
+    height: 24px;
+    margin: auto 0;
+    // accent-color: red;
+  }
+
+  input[type='checkbox']:checked {
+    // background-color: #ff8955;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+
+  input[type='text'] {
+    @include input($color-secondary-200);
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  button {
+    @include button($color-secondary-200, $color-secondary-400);
+  }
+}

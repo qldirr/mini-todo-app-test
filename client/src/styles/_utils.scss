@@ -1,0 +1,44 @@
+// 여러 파일에서 사용되는 sass 변수 및 mixin
+
+// COLOR
+$color-secondary-400: rgb(69, 69, 69);
+$color-secondary-300: rgb(100, 100, 100);
+$color-secondary-200: rgb(240, 240, 240);
+$color-secondary-100: rgb(255, 255, 255);
+
+$color-primary-400: rgb(82, 140, 255);
+
+// SIZE
+$width-md: 680px;
+
+// MIXIN
+@mixin button($bg-color, $color) {
+  padding: 0 16px;
+  height: auto;
+  border-radius: 6px;
+  border: none;
+  color: $color;
+  background-color: $bg-color;
+  cursor: pointer;
+}
+
+@mixin input($border-color) {
+  width: 100%; /* 원하는 너비 설정 */
+  height: auto; /* 높이값 초기화 */
+
+  padding: 12px 8px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $border-color;
+
+  &:focus {
+    /* 포커스시 발생하는 효과 제거를 원한다면 */
+    outline: none;
+  }
+}
+
+@mixin notice($color) {
+  color: $color;
+  font-size: 14px;
+  font-weight: 500;
+}

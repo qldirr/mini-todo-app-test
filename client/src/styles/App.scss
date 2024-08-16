@@ -1,0 +1,45 @@
+@import './utils.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-secondary-200;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  width: $width-md;
+  margin: 0 auto;
+  background-color: $color-secondary-100;
+
+  header {
+    background-color: $color-primary-400;
+    color: $color-secondary-100;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px 0;
+    text-shadow: 4px 4px 8px rbga(0, 0, 0, 0.2);
+  }
+
+  .left-todos,
+  .done-todos {
+    @include notice($color-secondary-300);
+    padding: 0 24px;
+    margin-bottom: 12px;
+  }
+
+  .empty-todos {
+    @include notice($color-secondary-300);
+    text-align: center;
+  }
+}
+
+@media (max-width: $width-md) {
+  .App {
+    width: 100vw;
+  }
+}

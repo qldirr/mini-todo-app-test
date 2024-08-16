@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../styles/AddTodo.scss'
 
 export default function AddTodo({ addItem }) {   // 함수를 props로 받음
     const [todoItem, setTodoItem] = useState({

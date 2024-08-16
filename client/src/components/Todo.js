@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
+import '../styles/Todo.scss'
 
-export default function Todo({ item, deleteItem }) {
+export default function Todo({ item, deleteItem, updateItem }) {
     const [todoItem, setTodoItem] = useState(item)
     const [readOnly, setReadOnly] = useState(true)
 
-    const onDeleteBtnClick = () => {
+    const onDeleteBtnClick = useCallback(() => {
         deleteItem(todoItem)
-    }
+    }, [deleteItem])
 
     // title 클릭 시 실행되는 함수 : readOnly를 false 로 변경
-    const offReadOnlyMode = () => {
+    const offReadOnlyMode =  useCallback(() => {
         setReadOnly(false)
-    }
+    }, [])
 
     // readOnly true : enter 키 누르면 readOnly를 true로 변경
     const enterKeyEventHandler = (e) => {
         if (e.key === 'Enter') {
             setReadOnly(true)
+            updateItem(todoItem)    // 엔터 누르면 저장
         }
     }
 
@@ -33,11 +35,15 @@ export default function Todo({ item, deleteItem }) {
 
     // checkbox 업데이트
     const checkboxEventHandler = (e) => {
+        // rest : id, title 정보
         const { done, ...rest } = todoItem
-        setTodoItem({
-            done: e.target.checked,
+
+        const updatedItem = {
+            done:e.target.checked,
             ...rest
-        })
+        }
+        setTodoItem(updateItem)
+        updateItem(updatedItem)   // 수정 API, checkbox 변경 시 저장
     }
     return (
         <div className='Todo'>
